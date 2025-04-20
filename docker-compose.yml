@@ -1,0 +1,6 @@
+services:
+  bot:
+    image: tg-bot-weather:latest
+    container_name: tg-bot-weather
+    command: python3 bot/main.py
+    restart: always

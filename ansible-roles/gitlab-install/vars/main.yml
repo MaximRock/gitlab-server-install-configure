@@ -1,0 +1,7 @@
+---
+# vars file for gitlab-install
+
+# Copy file docker-compose.yml
+file_docker_compose_env:
+  - docker-compose.yml
+  - .env

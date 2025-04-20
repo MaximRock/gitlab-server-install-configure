@@ -1,0 +1,57 @@
+---
+# defaults file for gitlab-config-ci
+
+# Create Gitlab project
+gitlab_url: "http://vagrant.max-rock.ru"
+gitlab_api_url_project: "{{ gitlab_url}}/api/v4/projects/"
+method: "POST"
+body_format: "json"
+
+project_name: "tg-bot"
+description_project: "Telegram bot"
+path_project: "tg-bot"
+visibility_project: "public"
+initialize_with_readme_project: "yes"
+status_code: "201"
+return_content: "yes"
+
+body_json_project: 
+        {
+          "name": "{{ project_name }}", 
+          "description": "{{ description_project }}", 
+          "path": "{{ path_project }}",
+          "visibility": "{{ visibility_project }}",
+          "initialize_with_readme": "{{ initialize_with_readme_project }}"
+            }
+
+
+# Create Gitlab Runners
+gitlab_api_url_runners: "{{ gitlab_url }}/api/v4/user/runners"
+runner_type: "project_type"
+description_runner: "test-runner"
+tag_list_runner: "docker"
+
+body_json_runner: 
+      {
+        "runner_type": "{{ runner_type }}",
+        "project_id": "{{ project.json.id }}",
+        "description": "{{ description_runner }}",
+        "tag_list": "{{ tag_list_runner }}"
+      } 
+
+# Register with a runner authentication token
+container: "gitlab-runner"
+
+url: "http://vagrant.max-rock.ru/"
+executor: "docker"
+docker_image: "docker:dind"
+description: "docker-runner"
+
+gitlab_runner_register: 'gitlab-runner register --non-interactive --url "{{ gitlab_url }}" --token "{{ runner.json.token }}" --executor "{{ executor }}" --docker-image "{{ docker_image }}" --description "{{ description }}"'
+
+
+# String replacement
+path_to_config: "/srv/gitlab-runner/config/config.toml"
+regexp_string: '    volumes = \["/cache"\]'
+replace_string: '    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock"]'
+

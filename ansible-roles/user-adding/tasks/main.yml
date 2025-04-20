@@ -1,0 +1,72 @@
+---
+# tasks file for user-adding
+
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Install python and pip packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "{{ state_present }}"
+    update_cache: "{{ update_cache }}"
+  with_items:
+    - "{{ python_packages }}"
+  when: item not in ansible_facts.packages
+  
+- name: Install passlib
+  become_user: "{{ user_name_local }}"
+  local_action:
+    module: "{{ module }}"
+    name: "{{ package_name }}"
+    executable: "{{ executable }}"
+    state: "{{ state_present }}"
+  when: package_name not in ansible_facts.packages
+
+- name: Check if user exists
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ user_name }}"
+  register: user_exists
+  ignore_errors: yes
+
+- name: Add user
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    state: "{{ state_present }}"
+    create_home: "{{ user_create_home }}"
+    shell: /bin/bash
+    groups: "{{ user_add_to_group }}"
+    password: "{{ user_password | password_hash('sha512') }}"
+    append: yes
+  when: user_exists is failed
+
+- name: Create directory for ssh keys
+  ansible.builtin.file:
+    path: "/home/{{ user_name }}/.ssh"
+    state: "{{ state_directory }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: "{{ mode_directory }}"
+    
+- name: Generate SSH key
+  community.crypto.openssh_keypair:
+    path: "{{ path_ssh_key }}"
+    type: "{{ type_ssh_key }}"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: "{{ mode_directory_ssh }}"
+
+- name: Copy to localhost ssh key
+  ansible.posix.authorized_key:
+    user: "{{ user_name }}"
+    state: "{{ state_present }}"
+    key: "{{ lookup('file', '{{ path_key_file }}') }}"
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    groups:
+      - "{{ docker_group }}"
+    append: yes
+

@@ -1,0 +1,48 @@
+---
+# tasks file for docker_install
+
+- name: Install required system packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: "{{ packages_state }}"
+    update_cache: true
+  loop:
+    "{{ docker_required_packages }}"
+
+- name: Add Docker GPG apt Key
+  ansible.builtin.apt_key:
+    url: "{{ url_docker_gpa_key }}"
+    state: "{{ docker_state }}"
+
+- name: Add Docker Repository
+  ansible.builtin.apt_repository:
+    repo: "{{ url_docker_repository }}"
+    state: "{{ docker_state }}"
+
+- name: Update apt and install docker-ce
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: "{{ docker_state }}"
+    update_cache: true
+  loop:
+    "{{ docker_obsolete_packages }}"
+  notify: restart docker
+
+- name: Current User
+  become_user: "{{ user_name_vagrant }}"
+  ansible.builtin.shell: "{{ command_echo_user }}"
+  register: __user
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ __user.stdout }}"
+    groups:
+      - "{{ docker_group }}"
+    append: true
+
+- name: Install Docker-Compose
+  ansible.builtin.get_url:
+    url: "{{ docker_compose_url }}"
+    dest: "{{ docker_compese_path }}"
+    mode: "{{ docker_compose_mode }}"
+  notify: restart docker

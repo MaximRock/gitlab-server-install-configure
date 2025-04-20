@@ -1,0 +1,11 @@
+---
+# vars file for docker_install
+
+# user_name: "vagrant"
+
+docker_obsolete_packages:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-buildx-plugin
+    - docker-compose-plugin

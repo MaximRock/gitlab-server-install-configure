@@ -1,0 +1,15 @@
+.env
+.flake8
+.venv
+.idea
+.vscode
+.python-version
+.vagrant
+__pycache__
+srv
+.vault_pass
+gitlab-api.txt
+gitlab-api/.env
+config_api/__pycache__
+data/__pycache__
+gitlab-srv-install/.env

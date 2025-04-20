@@ -1,0 +1,28 @@
+---
+# defaults file for user-adding
+
+# Install python and pip packages
+update_cache: "yes"
+
+#Install passlib
+module: "ansible.builtin.pip"
+executable: "pip3"
+package_name: "passlib"
+
+# Add user
+user_create_home: "yes"
+user_add_to_group: "sudo"
+user_password: "qwerty"
+user_name_local: "maxim"
+
+# Create directory for ssh keys
+state_directory: "directory"
+mode_directory: "0700"
+
+# Generate SSH key
+mode_directory_ssh: "0600"
+path_ssh_key: "/home/{{ user_name }}/.ssh/id_ed25519"
+type_ssh_key: "ed25519"
+
+# Copy to localhost ssh key
+path_key_file: "/home/{{ user_name_local }}/.ssh/id_ed25519.pub"

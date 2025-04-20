@@ -1,0 +1,23 @@
+---
+# tasks file for prepare-server
+
+- name: Install Aptitude
+  ansible.builtin.apt:
+    name: aptitude
+    state: latest
+    update_cache: yes
+
+- name: Update and upgrade apt packages
+  ansible.builtin.apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Set timezone to Eurpoe/Moscow
+  ansible.builtin.timezone:
+    name: Europe/Moscow
+
+- name: Install Chrony
+  ansible.builtin.apt:
+    name: chrony
+    state: latest
+    update_cache: yes

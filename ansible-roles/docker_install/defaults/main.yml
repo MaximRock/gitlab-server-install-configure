@@ -1,0 +1,30 @@
+---
+# defaults file for docker_install
+
+# install required system packages
+docker_required_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common
+packages_state: "latest"
+
+# Service options.
+docker_restast_handler_state: "restarted"
+docker_service_enabled: true
+
+# docker options
+url_docker_gpa_key: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+url_docker_repository: "deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+docker_state: "present"
+
+# doccker-compose options
+ver_docker_compose: "v2.33.1"
+docker_compose_url: "https://github.com/docker/compose/releases/download/{{ ver_docker_compose }}/docker-compose-{{ ansible_system | lower }}-{{ ansible_architecture | lower}}"
+docker_compese_path: "/usr/bin/docker-compose"
+docker_compose_mode: "0755"
+
+# Add user docker group
+user_name_vagrant: "vagrant"
+command_echo_user: "echo $USER"
+

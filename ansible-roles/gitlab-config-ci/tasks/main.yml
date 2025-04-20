@@ -1,0 +1,50 @@
+---
+# tasks file for gitlab-config-ci
+
+- name: Create Gitlab project
+  ansible.builtin.uri:
+    url: "{{ gitlab_api_url_project }}"
+    method: "{{ method }}"
+    headers:
+      PRIVATE-TOKEN: "{{ gitlab_api_token }}"
+    body_format: "{{ body_format }}"
+    body: "{{ body_json_project }}"
+    status_code: "{{ status_code }}"
+    return_content: "{{ return_content }}"
+  register: project
+
+- name: Inspect the project
+  ansible.builtin.debug:
+    var: project.json.id
+  
+- name: Create Gitlab Runners
+  ansible.builtin.uri:
+    url: "{{ gitlab_api_url_runners }}"
+    method: "{{ method }}"
+    headers:
+      PRIVATE-TOKEN: "{{ gitlab_api_token }}"
+    body_format: "{{ body_format }}"
+    body: "{{ body_json_runner }}"
+    status_code: "{{ status_code }}"
+    return_content: "{{ return_content }}"
+  register: runner
+
+- name: Inspect the runner
+  ansible.builtin.debug:
+    var: runner.json.token
+
+- name: Register with a runner authentication token
+  collections:
+    - community.docker
+  community.docker.docker_container_exec:
+    container: "{{ container }}"
+    command: "{{ gitlab_runner_register }}"
+  register: runner_register
+
+- name: String replacement
+  ansible.builtin.replace:
+    path: "{{ path_to_config }}"
+    regexp: "{{ regexp_string }}"
+    replace: "{{ replace_string }}"
+
+

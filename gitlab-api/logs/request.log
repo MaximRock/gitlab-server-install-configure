@@ -1,0 +1,112 @@
+2025-04-19 14:32:28,718 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:32:28,883 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:32:28,883 - [INFO] - __main__ - (main.py).create_user(60) - Создание пользователя
+2025-04-19 14:32:28,884 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:32:28,979 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:32:28,979 - [INFO] - __main__ - (main.py).get_all_users(52) - Все пользователи
+2025-04-19 14:32:28,979 - [INFO] - __main__ - (main.py).create_user(71) - ID пользователя: 22
+2025-04-19 14:32:28,979 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/22/personal_access_tokens
+2025-04-19 14:32:29,082 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:32:29,082 - [INFO] - __main__ - (main.py).create_token_for_user(85) - Создание токена пользователя
+2025-04-19 14:32:29,082 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/user//22
+2025-04-19 14:32:29,489 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:32:29,489 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/
+2025-04-19 14:32:29,614 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:32:29,614 - [INFO] - __main__ - (main.py).get_all_projects(45) - Все проекты
+2025-04-19 14:32:29,614 - [INFO] - __main__ - (main.py).create_project_for_user(102) - ID: 23
+2025-04-19 14:32:29,615 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/user//runners
+2025-04-19 14:32:29,719 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:32:29,720 - [INFO] - __main__ - (main.py).create_runner_for_project(117) - Создание раннера проекта
+2025-04-19 14:32:29,720 - [INFO] - __main__ - (main.py).create_runner_for_project(119) - Токен раннера: glrt-t3_5mjA8zN8x5vnMdSS_Caa
+2025-04-19 14:32:30,631 - [INFO] - __main__ - (main.py).registration_gitlab_runner_on_server(136) - Регистрация раннера на сервере
+2025-04-19 14:32:31,900 - [INFO] - __main__ - (main.py).replace_in_config_runner(178) - Конфигурация файла config.toml
+2025-04-19 14:34:35,925 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:34:36,111 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:34:36,111 - [INFO] - __main__ - (main.py).create_user(60) - Создание пользователя
+2025-04-19 14:34:36,111 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:34:36,210 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:34:36,211 - [INFO] - __main__ - (main.py).get_all_users(52) - Все пользователи
+2025-04-19 14:34:36,211 - [INFO] - __main__ - (main.py).create_user(71) - ID пользователя: 23
+2025-04-19 14:34:36,211 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/23/personal_access_tokens
+2025-04-19 14:34:36,303 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:34:36,303 - [INFO] - __main__ - (main.py).create_token_for_user(85) - Создание токена пользователя
+2025-04-19 14:34:36,303 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/user/23
+2025-04-19 14:34:36,716 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:34:36,717 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/
+2025-04-19 14:34:36,864 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:34:36,865 - [INFO] - __main__ - (main.py).get_all_projects(45) - Все проекты
+2025-04-19 14:34:36,865 - [INFO] - __main__ - (main.py).create_project_for_user(102) - ID: 24
+2025-04-19 14:34:36,865 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/user/runners
+2025-04-19 14:34:36,967 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:34:36,967 - [INFO] - __main__ - (main.py).create_runner_for_project(117) - Создание раннера проекта
+2025-04-19 14:34:36,967 - [INFO] - __main__ - (main.py).create_runner_for_project(119) - Токен раннера: glrt-t3_kHyvPsb6j_zsh_9M2Lsj
+2025-04-19 14:34:37,742 - [INFO] - __main__ - (main.py).registration_gitlab_runner_on_server(136) - Регистрация раннера на сервере
+2025-04-19 14:34:38,977 - [INFO] - __main__ - (main.py).replace_in_config_runner(178) - Конфигурация файла config.toml
+2025-04-19 14:45:19,289 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:45:19,425 - [ERROR] - __main__ - (config_api.py).make_request(80) - 409 Client Error: Conflict for url: http://vagrant.max-rock.ru/api/v4/users/
+Traceback (most recent call last):
+  File "/home/maxim/github/gitlab-server-install-configure/gitlab-api/config_api/config_api.py", line 78, in make_request
+    response.raise_for_status()
+  File "/home/maxim/.pyenv/versions/3.12.4/envs/gitlab-srv-install/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:45:19,425 - [INFO] - __main__ - (main.py).create_user(62) - Создание пользователя
+2025-04-19 14:45:19,425 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:45:19,580 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:45:19,580 - [INFO] - __main__ - (main.py).get_all_users(54) - Все пользователи
+2025-04-19 14:45:19,580 - [INFO] - __main__ - (main.py).create_user(73) - ID пользователя: None
+2025-04-19 14:45:19,580 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/None/personal_access_tokens
+2025-04-19 14:45:19,660 - [ERROR] - __main__ - (config_api.py).make_request(80) - 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/users/None/personal_access_tokens
+Traceback (most recent call last):
+  File "/home/maxim/github/gitlab-server-install-configure/gitlab-api/config_api/config_api.py", line 78, in make_request
+    response.raise_for_status()
+  File "/home/maxim/.pyenv/versions/3.12.4/envs/gitlab-srv-install/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/users/None/personal_access_tokens
+2025-04-19 14:45:19,660 - [INFO] - __main__ - (main.py).create_token_for_user(87) - Создание токена пользователя
+2025-04-19 14:45:19,660 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/user/None
+2025-04-19 14:45:19,772 - [ERROR] - __main__ - (config_api.py).make_request(80) - 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/projects/user/None
+Traceback (most recent call last):
+  File "/home/maxim/github/gitlab-server-install-configure/gitlab-api/config_api/config_api.py", line 78, in make_request
+    response.raise_for_status()
+  File "/home/maxim/.pyenv/versions/3.12.4/envs/gitlab-srv-install/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/projects/user/None
+2025-04-19 14:45:19,773 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/
+2025-04-19 14:45:19,857 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:45:19,857 - [INFO] - __main__ - (main.py).get_all_projects(47) - Все проекты
+2025-04-19 14:45:19,857 - [INFO] - __main__ - (main.py).create_project_for_user(104) - ID: None
+2025-04-19 14:45:19,857 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/user/runners
+2025-04-19 14:45:19,927 - [ERROR] - __main__ - (config_api.py).make_request(80) - 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/user/runners
+Traceback (most recent call last):
+  File "/home/maxim/github/gitlab-server-install-configure/gitlab-api/config_api/config_api.py", line 78, in make_request
+    response.raise_for_status()
+  File "/home/maxim/.pyenv/versions/3.12.4/envs/gitlab-srv-install/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://vagrant.max-rock.ru/api/v4/user/runners
+2025-04-19 14:45:19,927 - [INFO] - __main__ - (main.py).create_runner_for_project(119) - Создание раннера проекта
+2025-04-19 14:45:19,927 - [INFO] - __main__ - (main.py).create_runner_for_project(121) - Токен раннера: None
+2025-04-19 14:45:20,762 - [INFO] - __main__ - (main.py).registration_gitlab_runner_on_server(138) - Регистрация раннера на сервере
+2025-04-19 14:45:22,100 - [INFO] - __main__ - (main.py).replace_in_config_runner(180) - Конфигурация файла config.toml
+2025-04-19 14:47:09,484 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:47:09,661 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:47:09,662 - [INFO] - __main__ - (main.py).create_user(62) - Создание пользователя
+2025-04-19 14:47:09,662 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/
+2025-04-19 14:47:09,768 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:47:09,768 - [INFO] - __main__ - (main.py).get_all_users(54) - Все пользователи
+2025-04-19 14:47:09,768 - [INFO] - __main__ - (main.py).create_user(73) - ID пользователя: 24
+2025-04-19 14:47:09,768 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/users/24/personal_access_tokens
+2025-04-19 14:47:09,862 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:47:09,862 - [INFO] - __main__ - (main.py).create_token_for_user(87) - Создание токена пользователя
+2025-04-19 14:47:09,863 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/user/24
+2025-04-19 14:47:10,334 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:47:10,334 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/projects/
+2025-04-19 14:47:10,475 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 200
+2025-04-19 14:47:10,476 - [INFO] - __main__ - (main.py).get_all_projects(47) - Все проекты
+2025-04-19 14:47:10,476 - [INFO] - __main__ - (main.py).create_project_for_user(104) - ID: 25
+2025-04-19 14:47:10,476 - [DEBUG] - __main__ - (config_api.py).make_request(74) - URL: http://vagrant.max-rock.ru/api/v4/user/runners
+2025-04-19 14:47:10,583 - [INFO] - __main__ - (config_api.py).make_request(84) - Status code: 201
+2025-04-19 14:47:10,583 - [INFO] - __main__ - (main.py).create_runner_for_project(119) - Создание раннера проекта
+2025-04-19 14:47:10,583 - [INFO] - __main__ - (main.py).create_runner_for_project(121) - Токен раннера: glrt-t3_aUzdeUrXUYPnGUQju4Mz
+2025-04-19 14:47:11,370 - [INFO] - __main__ - (main.py).registration_gitlab_runner_on_server(138) - Регистрация раннера на сервере
+2025-04-19 14:47:12,544 - [INFO] - __main__ - (main.py).replace_in_config_runner(180) - Конфигурация файла config.toml

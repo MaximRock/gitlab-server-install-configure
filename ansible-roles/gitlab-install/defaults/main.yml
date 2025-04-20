@@ -1,0 +1,29 @@
+---
+# defaults file for gitlab-install
+
+# Create directory for GitLab
+gitlab_dir: "/home/gitlab/gitlab-docker"
+gitlab_dir_state: "directory"
+user_name: "gitlab"
+
+# Install Docker Module for Python
+docker_module:
+  - requests==2.31.0
+  - docker==6.1.3
+  - docker-compose
+
+# Copy file docker-compose.yml
+docker_compose_src: "./gitlab-srv-install/"
+docker_compose_dest: "/home/gitlab/gitlab-docker/"
+
+# Deploy GitLab
+file_docker_compose: "docker-compose.yml"
+
+# Install Gitlab Runner
+name_gitlab_runner: "gitlab-runner"
+gitlab_runner_image: "gitlab/gitlab-runner:latest"
+state_started: "started"
+restart_policy: "always"
+volumes_container:
+  - /srv/gitlab-runner/config:/etc/gitlab-runner
+  - /var/run/docker.sock:/var/run/docker.sock

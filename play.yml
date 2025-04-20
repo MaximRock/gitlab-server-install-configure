@@ -1,0 +1,20 @@
+- name: Deploy telegram bot
+  hosts: node_1
+  become: yes
+  vars_files:
+    - ansible-roles/group_vars/all.yml
+  roles:
+    - role: ansible-roles/prepare-server
+      tags: prepare
+
+    - role: ansible-roles/docker_install
+      tags: docker    
+
+    - role: ansible-roles/user-adding
+      tags: user
+
+    - role: ansible-roles/gitlab-install
+      tags: gitlab
+
+    # - role: ansible-roles/gitlab-config-ci
+    #   tags: gitlab-config

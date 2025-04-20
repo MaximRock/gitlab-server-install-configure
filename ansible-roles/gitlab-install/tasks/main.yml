@@ -1,0 +1,37 @@
+---
+# tasks file for gitlab-install
+
+- name: Create directory for GitLab
+  ansible.builtin.file:
+    path: "{{ gitlab_dir }}"
+    state: "{{ gitlab_dir_state }}"
+    owner: "{{ user_name }}"
+
+- name: Install Docker Module for Python
+  ansible.builtin.pip:
+    name:
+      - "{{ item }}"
+    state: "{{ state_present }}" 
+  loop: "{{ docker_module }}"
+
+- name: Copy file docker-compose.yml
+  ansible.builtin.copy:
+    src: "{{ docker_compose_src }}/{{ item }}"
+    dest: "{{ docker_compose_dest }}/{{ item }}"
+  with_items:
+    - "{{ file_docker_compose_env }}"
+
+- name: Install GitLab Server
+  community.docker.docker_compose_v2:
+    project_src: "{{ docker_compose_dest }}"
+    files:
+      - "{{ file_docker_compose }}"
+    state: "{{ state_present }}"
+
+- name: Install Gitlab Runner
+  community.docker.docker_container:
+    name: "{{ name_gitlab_runner }}"
+    image: "{{ gitlab_runner_image }}"
+    state: "{{ state_started }}"
+    restart_policy: "{{ restart_policy }}"
+    volumes: "{{ volumes_container }}"

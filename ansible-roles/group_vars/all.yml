@@ -1,0 +1,5 @@
+
+docker_group: "docker"
+state_present: "present"
+user_name: "gitlab"
+

@@ -1,0 +1,4 @@
+---
+# vars file for gitlab-config-ci
+
+gitlab_api_token:  "{{ vault_gitlab_api_token }}"

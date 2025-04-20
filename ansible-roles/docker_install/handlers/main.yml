@@ -1,0 +1,7 @@
+---
+# handlers file for docker_install
+- name: restart docker
+  service:
+    name: docker
+    state: "{{ docker_restast_handler_state }}"
+    enabled: "{{ docker_service_enabled }}"
