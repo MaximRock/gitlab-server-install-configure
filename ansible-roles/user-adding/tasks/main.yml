@@ -27,7 +27,7 @@
   ansible.builtin.getent:
     database: passwd
     key: "{{ user_name }}"
-  register: user_exists
+  register: __user_exists
   ignore_errors: yes
 
 - name: Add user
@@ -39,7 +39,22 @@
     groups: "{{ user_add_to_group }}"
     password: "{{ user_password | password_hash('sha512') }}"
     append: yes
-  when: user_exists is failed
+  when: __user_exists is failed
+
+- name: Check if user exists for docker
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ user_name }}"
+  register: __user_exists_docker
+  ignore_errors: yes
+
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ user_name }}"
+    groups:
+      - "{{ docker_group }}"
+    append: yes
+  when: __user_exists_docker is succeeded
 
 - name: Create directory for ssh keys
   ansible.builtin.file:
@@ -63,10 +78,5 @@
     state: "{{ state_present }}"
     key: "{{ lookup('file', '{{ path_key_file }}') }}"
 
-- name: Add user to docker group
-  ansible.builtin.user:
-    name: "{{ user_name }}"
-    groups:
-      - "{{ docker_group }}"
-    append: yes
+
 

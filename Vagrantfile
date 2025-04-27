@@ -2,18 +2,19 @@
 # vi: set ft=ruby :
 
     
-PRIVATE_NETWORK_IP = "38.0.0.15"
-NETWORK_BRIDGE = "enp7s0" 
+PRIVATE_NETWORK_IP = ""
+NETWORK_BRIDGE = ""
+HOSTNAME = ""
 
-VB_MEMORY = 6144
-VB_CPUS = 2
+VB_MEMORY = "" 
+VB_CPUS = ""
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/jammy64"
     config.vm.box_check_update = false
 
     config.vm.define "node_1" do |node_1|
-        node_1.vm.hostname = "vagrant.max-rock.ru"
+        node_1.vm.hostname = HOSTNAME
         node_1.vm.network "private_network", ip: PRIVATE_NETWORK_IP, bridge: NETWORK_BRIDGE, hostname: true
         node_1.vm.synced_folder "gitlab-srv-install", "/home/vagrant/srv/"
         node_1.vm.provider "virtualbox" do |vb|
@@ -28,8 +29,8 @@ Vagrant.configure("2") do |config|
     config.vm.provision "ansible" do |ansible|
         ansible.playbook = "play.yml"
     end
-
-    # config.vm.provision "shell", path: "srv/install-gitlab.sh"
-
-
 end
+
+# "38.0.0.15"
+# enp7s0
+# vagrant.max-rock.ru 6144 2

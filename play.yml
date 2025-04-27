@@ -16,5 +16,3 @@
     - role: ansible-roles/gitlab-install
       tags: gitlab
 
-    # - role: ansible-roles/gitlab-config-ci
-    #   tags: gitlab-config

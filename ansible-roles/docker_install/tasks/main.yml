@@ -28,17 +28,26 @@
     "{{ docker_obsolete_packages }}"
   notify: restart docker
 
-- name: Current User
-  become_user: "{{ user_name_vagrant }}"
-  ansible.builtin.shell: "{{ command_echo_user }}"
-  register: __user
+# - name: Current User
+#   become_user: "{{ user_name_vagrant }}"
+#   ansible.builtin.shell: "{{ command_echo_user }}"
+#   register: __user
+#   ignore_errors: yes
+
+- name: Check if user exists
+  ansible.builtin.getent:
+    database: passwd
+    key: "{{ user_name_vagrant }}"
+  register: __user_vagrant
+  ignore_errors: yes
 
 - name: Add user to docker group
   ansible.builtin.user:
-    name: "{{ __user.stdout }}"
+    name: "{{ user_name_vagrant }}"
     groups:
       - "{{ docker_group }}"
     append: true
+  when: __user_vagrant is succeeded
 
 - name: Install Docker-Compose
   ansible.builtin.get_url:

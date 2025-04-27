@@ -1,16 +1,15 @@
 # version: '3.6'
 services:
   gitlab:
-    image: gitlab/gitlab-ce:latest
+    image: gitlab/gitlab-ce:$GITLAB_TAG
     container_name: gitlab
     restart: always
-    hostname: 'vagrant.max-rock.ru'
+    hostname: '$DOMIAN_NAME'
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://vagrant.max-rock.ru'
+        external_url '${HTTPS-http}://$DOMIAN_NAME'
         gitlab_rails['gitlab_shell_ssh_port'] = 2424
     ports:
-      - '8929:8929'
       - '80:80'
       - '443:443'
       - '2424:22'
