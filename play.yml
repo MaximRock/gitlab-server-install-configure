@@ -11,6 +11,7 @@
       tags: docker    
 
     - role: ansible-roles/user-adding
+      when: __user_vagrant is failed #or __user_vagrant.hosts|length == 0
       tags: user
 
     - role: ansible-roles/gitlab-install

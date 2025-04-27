@@ -4,7 +4,7 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 DIR_HOME="$(dirname "$SCRIPT_DIR")"
-FILE_ENV_DOCKER="${DIR_HOME}/gitlab-srv-install/.env.example"
+FILE_ENV_DOCKER="${DIR_HOME}/gitlab-srv-install/.env"
 TMP_FILE_DOCKER="${DIR_HOME}/gitlab-srv-install/env_docker.tmp"
 
 YES="yes"
@@ -57,10 +57,10 @@ main() {
     read -p "Для настройки сервера в Vagrant введите 'yes' или 'no' для удаленного сервера: " ANSWER
 
     # Применяем все замены
-    sed -i "1s|\"\"|\"$SERVER_DIR\"|" "$TMP_FILE_DOCKER"
-    sed -i "2s|\"\"|\"$ROOT_PASSWORD\"|" "$TMP_FILE_DOCKER"
-    sed -i "3s|\"\"|\"$SERVER_DOMAIN\"|" "$TMP_FILE_DOCKER"
-    sed -i "4s|\"\"|\"$GITLAB_IMAGE_TAG\"|" "$TMP_FILE_DOCKER"
+    sed -i "1s|\"\"|$SERVER_DIR|" "$TMP_FILE_DOCKER"
+    sed -i "2s|\"\"|$ROOT_PASSWORD|" "$TMP_FILE_DOCKER"
+    sed -i "3s|\"\"|$SERVER_DOMAIN|" "$TMP_FILE_DOCKER"
+    sed -i "4s|\"\"|$GITLAB_IMAGE_TAG|" "$TMP_FILE_DOCKER"
 
     if [[ "${ANSWER,,}" = "${YES,,}" ]]; then
         echo "Настройка для Vagrant"

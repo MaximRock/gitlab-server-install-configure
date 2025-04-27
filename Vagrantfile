@@ -2,12 +2,12 @@
 # vi: set ft=ruby :
 
     
-PRIVATE_NETWORK_IP = ""
-NETWORK_BRIDGE = ""
-HOSTNAME = ""
+PRIVATE_NETWORK_IP = "38.0.0.15"
+NETWORK_BRIDGE = "enp7s0"
+HOSTNAME = "vagrant.max-rock.ru"
 
-VB_MEMORY = "" 
-VB_CPUS = ""
+VB_MEMORY = 6144
+VB_CPUS = 2
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/jammy64"
