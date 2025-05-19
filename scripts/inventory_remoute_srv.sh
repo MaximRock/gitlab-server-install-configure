@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 # Скрипт: setup_inventory.sh
 # Интерактивно создаёт inventory-файл для Ansible
 
@@ -31,8 +29,11 @@ if ! [[ $IP_ADDRESS =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
   exit 1
 fi
 
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+DIR_HOME="$(dirname "$SCRIPT_DIR")"
+
 # Проверка существования ключа
-KEY_PATH="./mykeys/myansible.key"
+KEY_PATH="${DIR_HOME}/mykeys/myansible.key"
 if [ ! -f "$KEY_PATH" ]; then
   echo
   echo "⚠️ Внимание: Файл ключа $KEY_PATH не найден!"
@@ -42,7 +43,7 @@ if [ ! -f "$KEY_PATH" ]; then
 fi
 
 # Формирование inventory-файла
-INVENTORY_FILE="inventory.ini"
+INVENTORY_FILE="${DIR_HOME}/inventories/inventory_remoute.ini"
 
 {
   echo "[srv]"
@@ -56,23 +57,3 @@ echo "────────────────────────�
 cat "$INVENTORY_FILE"
 echo "────────────────────────────────────"
 echo "Расположение: $(realpath "$INVENTORY_FILE")"
-
-# #!/bin/bash
-# set -e
-
-# PATH_FOLDER=$HOME/github/vagrant-k8s-django-postgresql/src
-# NAME_FOLDER=mykeys
-# FOLDER=$PATH_FOLDER/$NAME_FOLDER
-
-# if [ ! -d $FOLDER ]
-# then
-#     mkdir $FOLDER 2>&1
-#     cd $FOLDER
-
-#     ssh-keygen -m PEM -t ed25519 -b 4096 -f myansible.key -N "" -C "root@srv" 2>&1
-
-# else
-#     cd $PATH_FOLDER
-#     rm -rf $FOLDER
-
-# fi 

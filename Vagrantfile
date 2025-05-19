@@ -2,11 +2,11 @@
 # vi: set ft=ruby :
 
     
-PRIVATE_NETWORK_IP = "38.0.0.15"
-NETWORK_BRIDGE = "enp7s0"
-HOSTNAME = "vagrant.max-rock.ru"
+PRIVATE_NETWORK_IP = "22.22.22.22"
+NETWORK_BRIDGE = "re"
+HOSTNAME = "re"
 
-VB_MEMORY = 6144
+VB_MEMORY = 5
 VB_CPUS = 2
 
 Vagrant.configure("2") do |config|

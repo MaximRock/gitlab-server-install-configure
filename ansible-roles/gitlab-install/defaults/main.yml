@@ -1,10 +1,13 @@
 ---
 # defaults file for gitlab-install
 
-# Create directory for GitLab
+# Create directory user GitLab
 gitlab_dir: "/home/gitlab/gitlab-docker"
 gitlab_dir_state: "directory"
 user_name: "gitlab"
+
+# Create directory user Vagrant
+gitlab_dir_vagrant: "/home/vagrant/gitlab-docker"
 
 # Install Docker Module for Python
 docker_module:
@@ -14,7 +17,9 @@ docker_module:
 
 # Copy file docker-compose.yml
 docker_compose_src: "./gitlab-srv-install/"
-docker_compose_dest: "/home/gitlab/gitlab-docker/"
+# docker_compose_dest_user_gitlab: "/home/gitlab/gitlab-docker/"
+# docker_compose_dest_user_vagrant: "/home/vagrant/gitlab-docker/"
+
 
 # Deploy GitLab
 file_docker_compose: "docker-compose.yml"

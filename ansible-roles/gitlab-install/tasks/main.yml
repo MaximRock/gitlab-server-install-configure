@@ -1,11 +1,19 @@
 ---
 # tasks file for gitlab-install
 
-- name: Create directory for GitLab
+- name: Create directory user Gitlab 
   ansible.builtin.file:
     path: "{{ gitlab_dir }}"
     state: "{{ gitlab_dir_state }}"
     owner: "{{ user_name }}"
+  when: __user_vagrant is failed
+
+- name: Create directory user Vagrant
+  ansible.builtin.file:
+    path: "{{ gitlab_dir_vagrant }}"
+    state: "{{ gitlab_dir_state }}"
+    owner: "{{ user_name_vagrant }}"
+  when: __user_vagrant is succeeded
 
 - name: Install Docker Module for Python
   ansible.builtin.pip:
@@ -14,16 +22,25 @@
     state: "{{ state_present }}" 
   loop: "{{ docker_module }}"
 
-- name: Copy file docker-compose.yml
+- name: Copy file docker-compose.yml for user GitLab
   ansible.builtin.copy:
     src: "{{ docker_compose_src }}/{{ item }}"
-    dest: "{{ docker_compose_dest }}/{{ item }}"
+    dest: "{{ (__user_vagrant is succeeded) | ternary(gitlab_dir_vagrant, gitlab_dir) }}/{{ item }}"
   with_items:
     - "{{ file_docker_compose_env }}"
+ 
+
+# - name: Copy file docker-compose.yml for user Vagrant
+#   ansible.builtin.copy:
+#     src: "{{ docker_compose_src }}/{{ item }}"
+#     dest: "{{ gitlab_dir_vagrant }}/{{ item }}"
+#   with_items:
+#     - "{{ file_docker_compose_env }}"
+#   when: __user_vagrant is succeeded
 
 - name: Install GitLab Server
   community.docker.docker_compose_v2:
-    project_src: "{{ docker_compose_dest }}"
+    project_src: "{{ (__user_vagrant is succeeded) | ternary(gitlab_dir_vagrant, gitlab_dir) }}"
     files:
       - "{{ file_docker_compose }}"
     state: "{{ state_present }}"

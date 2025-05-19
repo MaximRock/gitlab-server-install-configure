@@ -21,3 +21,16 @@
     name: chrony
     state: latest
     update_cache: yes
+
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Install python and pip packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: "{{ state_present }}"
+    update_cache: "{{ update_cache }}"
+  with_items:
+    - "{{ python_packages }}"
+  when: item not in ansible_facts.packages

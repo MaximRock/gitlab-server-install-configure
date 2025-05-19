@@ -25,6 +25,6 @@ docker_compese_path: "/usr/bin/docker-compose"
 docker_compose_mode: "0755"
 
 # Add user docker group
-user_name_vagrant: "vagrant"
+#user_name_vagrant: "vagrant"
 command_echo_user: "echo $USER"
 

@@ -5,6 +5,7 @@
 .vscode
 .python-version
 .vagrant
+.korzina
 __pycache__
 srv
 .vault_pass

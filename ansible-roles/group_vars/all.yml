@@ -1,5 +1,7 @@
 
 docker_group: "docker"
+update_cache: "yes"
 state_present: "present"
 user_name: "gitlab"
+user_name_vagrant: "vagrant"
 

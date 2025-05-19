@@ -1,5 +1,5 @@
 - name: Config Gitlab Server
-  hosts: node_1
+  hosts: all
   become: yes
   vars_files:
     - ansible-roles/gitlab-config-ci/vars/vault.yml
