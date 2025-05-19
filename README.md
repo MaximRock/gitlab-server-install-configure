@@ -149,7 +149,7 @@ ansible-playbook play-gitlab-config.yml -i ./inventories/inventory_remoute.ini
 ```
 
 #### Python
-*Python script* - создает пользователя, создает проект, создает раннер для проекта, регистрирует раннер.
+*Python script* - создает пользователя, проект, раннер для проекта, регистрирует раннер.
 
 Отредактируем файл *.env*
 ```bash
